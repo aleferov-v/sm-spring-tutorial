@@ -17,6 +17,15 @@
  				<ref bean="database"/>
  			</list>
  		</constructor-arg>
+ 		
+ 		<property name="mainService" ref="logger"/>
+ 		<property name="services">
+ 			<list>
+ 				<ref bean="logger"/>
+ 				<ref bean="mail"/>
+ 				<ref bean="database"/>
+ 			</list>
+ 		</property>
  	</bean>
  	
  	<bean id="logger" class="sm.eclipse.project.Logger"/>

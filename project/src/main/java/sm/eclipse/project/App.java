@@ -25,4 +25,11 @@ public class App {
 		return services;
 	}
 		
+	public void setMainService(Service mainService) {
+		this.mainService = mainService;
+	}
+	
+	public void setServices(Service[] services) {
+		this.services = services;
+	}
 }
