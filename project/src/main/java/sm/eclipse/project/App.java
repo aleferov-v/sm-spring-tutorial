@@ -1,36 +1,28 @@
 package sm.eclipse.project;
 
-/**
- * Hello world!
- *
- */
+import java.util.Arrays;
+
 public class App {
 	
-	private static int count = 0;
-	private String id;
+	private Service mainService;
+	private Service[] services;
 	
-	public App() {
-		System.out.println(count++);
-	}
-	
-	public void init() {
-		System.out.println("The App has been init...");
-	}
-	
-	public void close() {
-		System.out.println("The App closed.");
-	}
-	
-	public App(String id) {
-		this.id = id;
+	public App(Service mainService) {
+		this.mainService = mainService;
+		System.out.println("Construct App with main service: " + mainService);
 	}
 
-	public String getId() {
-		return id;
+	public App(Service[] services) {
+		this.services = services;
+		System.out.println("Construct App with services: " + Arrays.toString(services));
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public Service getMainService() {
+		return mainService;
 	}
 	
+	public Service[] getServices() {
+		return services;
+	}
+		
 }

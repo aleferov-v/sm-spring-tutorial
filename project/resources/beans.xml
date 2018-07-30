@@ -9,5 +9,11 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
  <!-- We can define our beans here -->
- 	<bean id="app" class="sm.eclipse.project.App" init-method="init" destroy-method="close"></bean>
+ 	<bean id="app" class="sm.eclipse.project.App">
+ 		<constructor-arg ref="logger"/>
+ 	</bean>
+ 	
+ 	<bean id="logger" class="sm.eclipse.project.Logger"/>
+ 	<bean id="mail" class="sm.eclipse.project.Mail"/>
+ 	<bean id="database" class="sm.eclipse.project.Database"/>
 </beans>
