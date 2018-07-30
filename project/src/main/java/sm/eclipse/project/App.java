@@ -7,6 +7,13 @@ public class App {
 	private Service mainService;
 	private Service[] services;
 	
+	public App() {
+	}
+	
+	public void init() {
+		System.out.println("Main service is : " + mainService);
+	}
+	
 	public App(Service mainService) {
 		this.mainService = mainService;
 		System.out.println("Construct App with main service: " + mainService);
