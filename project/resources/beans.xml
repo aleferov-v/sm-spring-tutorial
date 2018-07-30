@@ -9,10 +9,7 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
  <!-- We can define our beans here -->
- 	<bean id="app" class="sm.eclipse.project.App" autowire="byType" init-method="init"/>
- 	
- 	<bean id="logger" class="sm.eclipse.project.Logger" autowire-candidate="true"/>
- 	<bean id="mail" class="sm.eclipse.project.Mail" autowire-candidate="false"/>
- 	<bean id="database" class="sm.eclipse.project.Database" autowire-candidate="false"/>
+ 
+ 	<context:component-scan base-package="sm.eclipse.project"/>
 
 </beans>

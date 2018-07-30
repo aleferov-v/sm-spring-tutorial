@@ -1,5 +1,8 @@
 package sm.eclipse.project;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Logger implements Service {
 
 	public String name() {

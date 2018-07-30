@@ -1,42 +1,42 @@
 package sm.eclipse.project;
 
+import java.beans.ConstructorProperties;
 import java.util.Arrays;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class App {
 	
 	private Service mainService;
 	private Service[] services;
 	
-	public App() {
-	}
-	
-	public void init() {
-		System.out.println("Main service is : " + mainService);
-	}
-	
-	public App(Service mainService) {
+	@Autowired
+	public App(@Qualifier("logger") Service mainService) {
 		this.mainService = mainService;
 		System.out.println("Construct App with main service: " + mainService);
 	}
-
+	
+	@Autowired
 	public App(Service[] services) {
 		this.services = services;
 		System.out.println("Construct App with services: " + Arrays.toString(services));
 	}
 	
-	public Service getMainService() {
-		return mainService;
+	@PostConstruct
+	public void init() {
+		System.out.println("init...");
 	}
 	
-	public Service[] getServices() {
-		return services;
-	}
-		
-	public void setMainService(Service mainService) {
-		this.mainService = mainService;
-	}
-	
-	public void setServices(Service[] services) {
-		this.services = services;
+	@PreDestroy
+	public void destroy() {
+		System.out.println("destroying...");
 	}
 }
