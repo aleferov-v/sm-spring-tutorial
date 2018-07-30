@@ -10,7 +10,13 @@
  
  <!-- We can define our beans here -->
  	<bean id="app" class="sm.eclipse.project.App">
- 		<constructor-arg ref="logger"/>
+ 		<constructor-arg>
+ 			<list>
+ 				<ref bean="logger"/>
+ 				<ref bean="mail"/>
+ 				<ref bean="database"/>
+ 			</list>
+ 		</constructor-arg>
  	</bean>
  	
  	<bean id="logger" class="sm.eclipse.project.Logger"/>
