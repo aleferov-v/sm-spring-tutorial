@@ -18,25 +18,24 @@ public class App {
 	private Service mainService;
 	private Service[] services;
 	
-	@Autowired
-	public App(@Qualifier("logger") Service mainService) {
+	public App() {
+		
+	}
+	
+	public App(Service mainService) {
 		this.mainService = mainService;
 		System.out.println("Construct App with main service: " + mainService);
 	}
 	
-	@Autowired
 	public App(Service[] services) {
 		this.services = services;
 		System.out.println("Construct App with services: " + Arrays.toString(services));
 	}
 	
-	@PostConstruct
-	public void init() {
-		System.out.println("init...");
-	}
-	
-	@PreDestroy
-	public void destroy() {
-		System.out.println("destroying...");
+	@Autowired
+	@Qualifier("database")
+	public void setDatabase(Service mainService) {
+		System.out.println("Set main service: " + mainService.getClass().getSimpleName());
+		this.mainService = mainService;
 	}
 }
