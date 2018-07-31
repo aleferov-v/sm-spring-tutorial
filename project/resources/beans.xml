@@ -11,5 +11,5 @@
  <!-- We can define our beans here -->
  
  	<context:component-scan base-package="sm.eclipse.project"/>
-
+ 
 </beans>
