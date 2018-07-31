@@ -1,25 +1,29 @@
 package sm.eclipse.project;
 
-import java.beans.ConstructorProperties;
 import java.util.Arrays;
+
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
 public class App {
 	
+	@Autowired
+	@Qualifier("base")
 	private Service mainService;
+	
+	@Autowired
 	private Service[] services;
 	
+	@Value("123")
+	private String test;
+	
 	public App() {
-		
+		System.out.println("App() constructor");
 	}
 	
 	public App(Service mainService) {
@@ -32,10 +36,15 @@ public class App {
 		System.out.println("Construct App with services: " + Arrays.toString(services));
 	}
 	
-	@Autowired
-	@Qualifier("database")
-	public void setDatabase(Service mainService) {
+	public void setMainService(Service mainService) {
 		System.out.println("Set main service: " + mainService.getClass().getSimpleName());
 		this.mainService = mainService;
+	}
+	
+	@PostConstruct
+	public void post() {
+		System.out.println("mainService: " + mainService);
+		System.out.println("services: " + Arrays.asList(services));
+		System.out.println("test: " + test);
 	}
 }
