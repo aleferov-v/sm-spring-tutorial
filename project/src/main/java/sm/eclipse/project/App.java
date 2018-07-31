@@ -19,9 +19,6 @@ public class App {
 	@Autowired
 	private Service[] services;
 	
-	@Value("123")
-	private String test;
-	
 	public App() {
 		System.out.println("App() constructor");
 	}
@@ -41,10 +38,11 @@ public class App {
 		this.mainService = mainService;
 	}
 	
-	@PostConstruct
-	public void post() {
-		System.out.println("mainService: " + mainService);
-		System.out.println("services: " + Arrays.asList(services));
-		System.out.println("test: " + test);
+	public void init() {
+		System.err.println("init");
+	}
+	
+	public void stop() {
+		System.out.println("destory");
 	}
 }
